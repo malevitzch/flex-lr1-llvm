@@ -1,6 +1,5 @@
 #pragma once
-
-#include <tokens.hpp>
+#include "tokens.hpp"
 
 #if ! defined(yyFlexLexerOnce)
 #include <FlexLexer.h>
@@ -9,7 +8,7 @@
 class FrogLexer : public yyFlexLexer
 {
 public:
-    int yylex(Tokens::Token *const yylval);
+    int yylex(YYSTYPE* const yylval);
     FrogLexer(std::istream* input)
         : yyFlexLexer(input) {}
 };

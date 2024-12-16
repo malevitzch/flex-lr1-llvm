@@ -1,5 +1,3 @@
-
-%define api.value.type {Tokens::Token}
 %language "c++"
 %parse-param {FrogLexer &lexer}
 %define parse.error verbose
@@ -11,14 +9,17 @@
 %code {
     #define yylex lexer.yylex
 }
-
+%union {
+    Tokens::Token* token;
+}
+%destructor { delete $$; } <token>
 %{
 
 %}
 //TODO: finish inputting tokens
-%token NUMBER
-%token IDENTIFIER
-%token TYPE_ID
+%token <token> NUMBER
+%token <token> IDENTIFIER
+%token <token> TYPE_ID
 
 %token ARROW
 

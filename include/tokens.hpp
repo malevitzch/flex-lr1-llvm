@@ -43,3 +43,6 @@ namespace Tokens {
   };
 
 }
+typedef union {
+    Tokens::Token* token;
+} YYSTYPE;
